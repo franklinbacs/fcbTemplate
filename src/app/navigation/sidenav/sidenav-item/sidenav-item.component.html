@@ -1,0 +1,19 @@
+<a mat-list-item *ngIf="!hasChildren && !hasQuery && !hasExternalLink" [routerLink]="menuItem.link"
+  [ngClass]="{ 'active' : active }" (toggle)="true" (click)="clicked($event)">
+  <mat-icon *ngIf="showIcon">{{menuItem.icon}}</mat-icon>
+  <span class="title">{{ menuItem.title }}</span>
+</a>
+
+<a mat-list-item class="nav-dropdown" *ngIf="hasChildren" [ngClass]="{ 'active' : active }" (click)="clicked($event)">
+  <mat-icon *ngIf="showIcon">{{menuItem.icon}}</mat-icon>
+  <span class="title">{{ menuItem.title }}</span>
+  <span class="app-flex-filler"></span>
+  <i class="material-icons" *ngIf="!menuItem.showOnly && !menuItem.isPopup"></i>
+</a>
+
+<mat-nav-list class="level2-items" *ngIf="hasChildren && !menuItem.isPopup" class="nav-children {{levelClass}}"
+  [ngClass]="{ 'active' : active, 'shrink' : menuItem.shrinkDisplayHeight, 'no-animation' : menuItem.showOnly }"
+  [ngStyle]="{'height.px': height}">
+  <app-sidenav-item *ngFor="let menuItemChild of menuItem.children" [menuItem]="menuItemChild" [level]="level + 1"
+    [parent]="self"></app-sidenav-item>
+</mat-nav-list>

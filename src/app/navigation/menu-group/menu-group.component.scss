@@ -1,0 +1,46 @@
+@import "~@angular/material/theming";
+
+.group-wrapper {
+  margin: 14px;
+
+  .heading {
+    color: map_get($mat-red, 300);
+
+    mat-icon {
+      font-size: 1.2em;
+    }
+
+    .header {
+      font-size: 1.1em;
+    }
+
+    .parent-link {
+      cursor: pointer;
+      color: map_get($mat-blue, 500);
+      font-size: 1em;
+
+      &:hover {
+        color: map_get($mat-blue, 800);
+      }
+    }
+  }
+
+  .items-wrapper {
+    margin-left: 28px;
+
+    .menu-item {
+      font-size: 0.9em;
+      color: map_get($mat-blue-grey, 500);
+      margin: 2px;
+
+      .link {
+        cursor: pointer;
+        color: map_get($mat-blue, 500);
+
+        &:hover {
+          color: map_get($mat-blue, 800);
+        }
+      }
+    }
+  }
+}

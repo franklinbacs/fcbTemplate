@@ -1,0 +1,12 @@
+<section class="popup-wrapper">
+  <div class="title">
+    <mat-icon>{{parentMenuItem.icon}}</mat-icon>
+    <span>{{parentMenuItem.title}}</span>
+  </div>
+  <div class="menu-families">
+    <div class="family" *ngFor="let mnuFam of sortedMenuFamilies">
+      <app-menu-group [parentMenuItem]="mnuFam.parentMenuItem" [childrenItems]="mnuFam.childrenItems"
+        (menuClicked)="menuClicked($event)"></app-menu-group>
+    </div>
+  </div>
+</section>

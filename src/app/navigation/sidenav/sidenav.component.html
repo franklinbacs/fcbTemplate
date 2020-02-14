@@ -1,0 +1,16 @@
+<mat-toolbar color="primary" fxLayout="center center" fxLayout="row">
+  <div fxFlex fxFlexFill></div>
+  <img src="" class="logo" *ngIf="!isHovering && (sidenavStyle === 'icon' || sidenavStyle === 'icon overlay')"
+    alt="Company Name">
+  <img fxFlex src="logiImage" *ngIf="isHovering || !(sidenavStyle === 'icon' || sidenavStyle === 'icon overlay')"
+    class="logo" alt="">
+  <span *ngIf="isHovering || !(sidenavStyle === 'icon' || sidenavStyle === 'icon overlay')" class="title">
+    {{navigation.appTitle | async}}
+  </span>
+  <div fxFlex fxFlexFill></div>
+</mat-toolbar>
+<mat-nav-list class="side-navigation" [ngStyle]="{'height': height}">
+  <app-sidenav-item class="level1-items" *ngFor="let menuItem of (menuItemsObservable | async)" [menuItem]="menuItem"
+    [parent]="_this">
+  </app-sidenav-item>
+</mat-nav-list>

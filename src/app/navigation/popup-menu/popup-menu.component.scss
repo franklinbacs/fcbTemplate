@@ -1,0 +1,26 @@
+@import "~@angular/material/theming";
+
+.popup-wrapper {
+  margin: 14px;
+
+  .title {
+    color: map_get($mat-blue-grey, 500);
+    mat-icon {
+      font-size: 1.3em;
+    }
+
+    span {
+      font-size: 1.2em;
+    }
+  }
+  .menu-families {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 7px;
+
+    .family {
+      flex-basis: 50%;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<section class="group-wrapper">
+  <div class="heading" (click)="itemClick(parentMenuItem)">
+    <mat-icon>{{parentMenuItem.icon}}</mat-icon>
+    <span class="header" [ngClass]="{'parent-link': isParentWithLink()}">{{parentMenuItem.title}}</span>
+  </div>
+  <div class="items-wrapper">
+    <div class="menu-item" *ngFor="let item of childrenItems">
+      <div [ngClass]="{'link': item.link}" (click)="itemClick(item)">{{item.title}}</div>
+    </div>
+  </div>
+</section>
