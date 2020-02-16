@@ -10,7 +10,6 @@ import { StringUtils } from '../shared/utils/string-utils';
 @Injectable()
 export class NavigationService {
   smallViewportWidth = 600;
-  //  largeViewportWidth = 992;
   private _largeViewportWidth = 992;
   private _menuItems: Subject<MenuItem[]>;
   private _menuItemsTemp: Subject<MenuItem[]> = new BehaviorSubject(null);

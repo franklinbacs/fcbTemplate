@@ -12,7 +12,6 @@
     </header>
     <main
       [ngClass]="{'fixed-header' : (navigation.fixedNavbar | async), 'icon-sidenav-opened' : ((isHovering || (!isHovering && isHoveringNew)) && navigation.largeScreen && sidenavStyle === 'icon overlay')}">
-
       <div class="container">
         <router-outlet></router-outlet>
         <div class="clearfix"></div>

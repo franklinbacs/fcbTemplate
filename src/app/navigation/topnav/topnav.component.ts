@@ -18,17 +18,7 @@ export class TopnavComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription[] = [];
 
   sidenavOpenStyle: string;
-  userName = '';
-  greetingMessage = '';
-  isLoggedIn = false;
-  isShowClientInfo = false;
-  isAbleAddUser = false;
-  message: string;
-  ssoKeys: any;
-  isShowNewControl = false;  // whats new
-  isShowClients: boolean;
-  isDeviceHistory = true;
-  clientCode = '';
+  userName = 'John Doe';
   color = 'primary';
   showProgess = false;
   isOnline = true;
@@ -79,9 +69,6 @@ export class TopnavComponent implements OnInit, OnDestroy {
       this._cd.markForCheck();
     }
   }
-  get searchTerm(): string {
-    return this._searchTerm;
-  }
 
   set searchTerm(searchTerm: string) {
     this._searchTerm = searchTerm;
@@ -95,6 +82,4 @@ export class TopnavComponent implements OnInit, OnDestroy {
   signOutClick(): void {
 
   }
-
-
 }

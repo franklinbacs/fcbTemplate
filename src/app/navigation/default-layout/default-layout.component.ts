@@ -4,10 +4,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 
 import { Subscription, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { MenuSetupService } from './../menu-setup.service';
 import { NavigationService } from './../navigation.service';
 import { TopnavComponent } from '../topnav/topnav.component';
+import { IMenuItem } from '../IMenuItem';
 
 @Component({
   selector: 'app-default-layout',
@@ -37,7 +39,7 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // set menu selections
-    this._navigation.menuItems = this._menuSetupService.getMenuSetup();
+    this._navigation.menuItems = this._menuSetupService.setupMenuStructure(appMenus);
 
     if (this.navigation.mediumScreenAndDown) {
       this.sideNav.close();
@@ -45,17 +47,19 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
     }
 
     let lastWindowSize = 0;
-    const combined = combineLatest(this.navigation.sidenavOpened, this.navigation.openSidenavStyle,
-      this.navigation.closedSidenavStyle, this.navigation.windowSize, (opened, openStyle, closedStyle, windowSize) => {
-        let screenSizeChange = false;
+    const combined = combineLatest([this.navigation.sidenavOpened, this.navigation.openSidenavStyle,
+    this.navigation.closedSidenavStyle, this.navigation.windowSize])
+      .pipe(
+        map(([opened, openStyle, closedStyle, windowSize]) => {
+          let screenSizeChange = false;
 
-        if (windowSize !== lastWindowSize) {
-          lastWindowSize = windowSize;
-          screenSizeChange = true;
-        }
+          if (windowSize !== lastWindowSize) {
+            lastWindowSize = windowSize;
+            screenSizeChange = true;
+          }
 
-        return { opened, openStyle, closedStyle, screenSizeChange };
-      });
+          return { opened, openStyle, closedStyle, screenSizeChange };
+        }));
 
     this._subscriptions.push(
       combined.subscribe((p: { opened: boolean, openStyle: string, closedStyle: string, screenSizeChange: boolean }) => {
@@ -147,3 +151,51 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
     }
   }
 }
+
+
+const appMenus: IMenuItem[] = [
+  {
+    menuItemId: 1,
+    title: 'Dashboard',
+    link: '/dashboard',
+    queryParams: '',
+    clickHandler: '',
+    icon: 'home',
+    pathMatch: '',
+    displayOrder: 1,
+    parentId: null
+  },
+  {
+    menuItemId: 2,
+    title: 'Products',
+    link: '/produts',
+    queryParams: '',
+    clickHandler: '',
+    icon: 'devices_other',
+    pathMatch: '',
+    displayOrder: 2,
+    parentId: null
+  },
+  {
+    menuItemId: 3,
+    title: 'Hardware',
+    link: '/produts/hardware',
+    queryParams: '',
+    clickHandler: '',
+    icon: '',
+    pathMatch: '',
+    displayOrder: 1,
+    parentId: 2
+  },
+  {
+    menuItemId: 3,
+    title: 'Software',
+    link: '/produts/software',
+    queryParams: '',
+    clickHandler: '',
+    icon: '',
+    pathMatch: '',
+    displayOrder: 2,
+    parentId: 2
+  }
+];

@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import "src/assets/scss/_mixins";••
 
 .logo {
   width: 40px;
@@ -7,11 +8,3 @@
 .title {
   margin-left: 4px;
 }
-
-// .side-navigation {
-//   background-color: map_get($mat-blue, 500);
-
-//   level1-items {
-//     background-color: map_get($mat-blue, 700);
-//   }
-// }

@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import "../../../assets/scss/navigation";
 
 .main-containter {
   position: flex;
@@ -8,10 +9,6 @@
   left: 0;
   right: 0;
   background: map_get($mat-blue-grey, 50);
-
-  mat-sidenav {
-    // background-color: $primary-color !important;
-  }
 
   .select-message {
     font-size: 1.2em;

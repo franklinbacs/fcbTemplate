@@ -8,19 +8,14 @@ import { IMenuItem } from './IMenuItem';
 @Injectable()
 export class MenuSetupService {
 
-  public getMenuSetup(): BehaviorSubject<MenuItem[]> {
+  public setupMenuStructure(allMenuItems: IMenuItem[]): BehaviorSubject<MenuItem[]> {
+
     const menuItemSetup: MenuItem[] = [];
     const menuItemSetup$ = new BehaviorSubject<MenuItem[]>([]);
 
-    const allMenuItems: IMenuItem[] = [];
     let menuEntry: MenuItem = null;    // individual menu entry to MenuSetup
 
-    if (allMenuItems) {
-      // check if Dashboard is to be shown
-      // if (allMenuItems.findIndex(m => m.title === 'Dashboard') > -1) {
-      //   this._globalService.showDashboard$.next(true);
-      // }
-
+    if (allMenuItems.length) {
       for (const item of allMenuItems) {
         if (item.parentId === null) {
           const children: IMenuItem[] = allMenuItems.filter(i => i.parentId === item.menuItemId);  // get children if there are any
@@ -41,7 +36,8 @@ export class MenuSetupService {
                 const childrenMenuItem2: MenuItem[] = [];
 
                 for (const child2 of children2) {
-                  childrenMenuItem2.push(new MenuItem({ title: child2.title, link: child2.link, icon: child2.icon, isPopup: child2.isPopup }));
+                  childrenMenuItem2.push(
+                    new MenuItem({ title: child2.title, link: child2.link, icon: child2.icon, isPopup: child2.isPopup }));
                 }
 
                 menuEntry2 = new MenuItem(child.title, null, childrenMenuItem2, null, null, child.icon, null, child.isPopup);

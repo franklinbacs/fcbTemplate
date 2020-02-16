@@ -1,4 +1,5 @@
 # FcbTemplate
+A starting template using Angular 9 Material Design with dynamic menu items.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
 

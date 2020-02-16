@@ -6,14 +6,15 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span class="app-flex-filler"></span>
-    <div class="cr-bottom cr-right cr-sticky cr-orange" *ngIf="isShowNewControl">
-      Click anywhere to dismiss.
+    <div class="user">
+      <mat-icon aria-hidden="false" aria-label="Users face" color="warn">face</mat-icon>
+      <span class="user-name">{{userName}}</span>
     </div>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu" x-position="after">
-      <button mat-menu-item class="mat-menu-itemsmall">Profile</button>
+      <button mat-menu-item>Profile</button>
       <button mat-menu-item> Sign Out</button>
     </mat-menu>
   </mat-toolbar>
