@@ -11,7 +11,7 @@
   <i class="material-icons" *ngIf="!menuItem.showOnly && !menuItem.isPopup"></i>
 </a>
 
-<mat-nav-list class="level2-items" *ngIf="hasChildren && !menuItem.isPopup" class="nav-children {{levelClass}}"
+<mat-nav-list  *ngIf="hasChildren && !menuItem.isPopup" class="nav-children {{levelClass}}"
   [ngClass]="{ 'active' : active, 'shrink' : menuItem.shrinkDisplayHeight, 'no-animation' : menuItem.showOnly }"
   [ngStyle]="{'height.px': height}">
   <app-sidenav-item *ngFor="let menuItemChild of menuItem.children" [menuItem]="menuItemChild" [level]="level + 1"

@@ -8,7 +8,11 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: map_get($mat-blue-grey, 50);
+  // background: map_get($mat-blue-grey, 500);
+
+  #sideNavigation {
+    background-color: $secondary-color;
+  }
 
   .select-message {
     font-size: 1.2em;

@@ -1,8 +1,8 @@
 <mat-toolbar color="primary" fxLayout="center center" fxLayout="row">
   <div fxFlex fxFlexFill></div>
-  <img src="" class="" *ngIf="!isHovering && (sidenavStyle === 'icon' || sidenavStyle === 'icon overlay')"
-    alt="Company Name">
-  <img fxFlex src="logo" *ngIf="isHovering || !(sidenavStyle === 'icon' || sidenavStyle === 'icon overlay')"
+  <img src="../../../assets/images/logo.png" class="" *ngIf="!isHovering && (sidenavStyle === 'icon' || sidenavStyle === 'icon overlay')"
+    alt="franklinbacs">
+  <img fxFlex src="" *ngIf="isHovering || !(sidenavStyle === 'icon' || sidenavStyle === 'icon overlay')"
     class="logo" alt="">
   <span *ngIf="isHovering || !(sidenavStyle === 'icon' || sidenavStyle === 'icon overlay')" class="title">
     {{navigation.appTitle | async}}

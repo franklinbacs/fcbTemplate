@@ -1,17 +1,44 @@
 <mat-sidenav-container class="main-containter" autosize>
-  <mat-sidenav id="sideNavigation" (mouseover)="toggleHover(true)" (mouseout)="toggleHover(false)"
-    (close)="sidenavToggle(false)" (open)="sidenavToggle(true)"
-    [mode]="(navigation.mediumScreenAndDown && sidenavStyle !== 'off') ? 'over' : sidenavMode"
-    [ngClass]="{'icon-sidenav': ((sidenavStyle === 'icon' || sidenavStyle === 'icon overlay') && navigation.largeScreen), 'over': (sidenavStyle === 'icon overlay')}">
+  <mat-sidenav
+    id="sideNavigation"
+    (mouseover)="toggleHover(true)"
+    (mouseout)="toggleHover(false)"
+    (close)="sidenavToggle(false)"
+    (open)="sidenavToggle(true)"
+    [mode]="
+      navigation.mediumScreenAndDown && sidenavStyle !== 'off'
+        ? 'over'
+        : sidenavMode
+    "
+    [ngClass]="{
+      'icon-sidenav':
+        (sidenavStyle === 'icon' || sidenavStyle === 'icon overlay') &&
+        navigation.largeScreen,
+      over: sidenavStyle === 'icon overlay'
+    }"
+  >
     <app-sidenav [isHovering]="isHovering"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <header
-      [ngClass]="{'icon-sidenav-opened' : ((isHovering || (!isHovering && isHoveringNew)) && navigation.largeScreen && sidenavStyle === 'icon overlay')}">
+      [ngClass]="{
+        'icon-sidenav-opened':
+          (isHovering || (!isHovering && isHoveringNew)) &&
+          navigation.largeScreen &&
+          sidenavStyle === 'icon overlay'
+      }"
+    >
       <app-topnav></app-topnav>
     </header>
     <main
-      [ngClass]="{'fixed-header' : (navigation.fixedNavbar | async), 'icon-sidenav-opened' : ((isHovering || (!isHovering && isHoveringNew)) && navigation.largeScreen && sidenavStyle === 'icon overlay')}">
+      [ngClass]="{
+        'fixed-header': navigation.fixedNavbar | async,
+        'icon-sidenav-opened':
+          (isHovering || (!isHovering && isHoveringNew)) &&
+          navigation.largeScreen &&
+          sidenavStyle === 'icon overlay'
+      }"
+    >
       <div class="container">
         <router-outlet></router-outlet>
         <div class="clearfix"></div>
